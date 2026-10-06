@@ -1310,7 +1310,7 @@ footer {
               <div class="value">DOWNLOAD / INSTALL / HACK</div>
             </div>
 
-            <div class="terminal-sep">----------------------------------------------</div>
+            <div class="terminal-sep" id="terminalSeparator"></div>
 
             <div class="terminal-row">
               <div class="label">INTERFACE</div>
@@ -1548,6 +1548,34 @@ footer {
   </div>
 
   <script>
+
+    const terminalSeparator = document.getElementById("terminalSeparator");
+
+    function updateTerminalSeparator() {
+      if (!terminalSeparator) return;
+
+      const style = getComputedStyle(terminalSeparator);
+
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+
+      context.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+
+      const dashWidth = context.measureText("-").width;
+
+      const availableWidth = terminalSeparator.clientWidth;
+
+      const count = Math.max(
+        1,
+        Math.floor(availableWidth / dashWidth)
+      );
+
+      terminalSeparator.textContent = "-".repeat(count);
+    }
+
+    updateTerminalSeparator();
+
+    window.addEventListener("resize", updateTerminalSeparator);
 
     const mobileMenuToggle = document.getElementById("mobileMenuToggle");
     const mobileMenu = document.getElementById("mobileMenu");
