@@ -1650,64 +1650,70 @@ footer {
 
       const workflowSequence = [
         {
-          command: "SCAN www.example.com",
+          command: "SCAN ( WEB )",
           phase: "FINDING OPEN PORTS",
           explanation:
             "Find open ports, visible services, and the technologies exposed by the target."
         },
         {
-          command: "EXPLOIT SOFTWARE",
+          command: "EXPLOIT SOFTWARE ( PRODUCT NAME )",
           phase: "CHECKING FOR VULNERABILITIES",
           explanation:
-            "Check the detected software version against known security issues. If a relevant issue is found, Hackinster moves into validation."
+            "Check the detected software version against known security issues."
         },
         {
           command: "BRUTE SOFTWARE/WEB ( LOGIN )",
-          phase: "TESTING LOGIN SECURITY",
+          phase: "LOGIN SECURITY",
           explanation:
-            "Test whether exposed login forms are protected against repeated password attempts."
+            "Software and web authentication, password complexity, and brute-force defenses are being tested."
         },
         {
-          command: "BREACH DATABASE",
-          phase: "TESTING DATABASE INPUT",
+          command: "BREACH DATABASE ( PATH )",
+          phase: "DATABASE HASH CRACKING",
           explanation:
-            "Test whether database-backed input can be manipulated to access or change data it should not expose."
+            "Database resilience test, against SHA-256 hash cracking and unauthorized access."
         },
         {
-          command: "STEAL COOKIES",
+          command: "STEAL COOKIES ( WEB )",
           phase: "CHECKING SESSION SECURITY",
           explanation:
-            "Test whether untrusted web content can interfere with browser session data and user sessions."
+            "Attempt to steal user session cookies and evaluate web security against session hijacking."
         },
         {
-          command: "FORGE USER",
-          phase: "TESTING USER REQUESTS",
+          command: "STEALTH REQUEST ( WEB )",
+          phase: "FORGED REQUEST",
           explanation:
-            "Test whether a logged-in user can be tricked into sending an unwanted action without knowing it."
+            "Evaluate the application's protection against Cross-Site Request Forgery (CSRF) and unauthorized state-changing requests."
         },
         {
-          command: "FETCH FILES",
+          command: "FORGE USER ( WEB )",
+          phase: "IDENTITY SPOOFING",
+          explanation:
+            "Evaluate application vulnerability to request forgery and unauthorized identity spoofing."
+        },
+        {
+          command: "LEAK FILES ( WEB )",
           phase: "CHECKING FILE ACCESS",
           explanation:
-            "Test whether a web application can be pushed into loading files it was never meant to expose."
+            "Check if files outside the public web root can be accessed via directory traversal."
         },
         {
-          command: "TAKE OVER",
-          phase: "TESTING CODE EXECUTION",
+          command: "TAKE OVER ( WEB )",
+          phase: "INSERTING CUSTOM SCRIPT",
           explanation:
-            "Test whether a weakness could let an attacker cross from a web request into unauthorized code execution."
+            "Test for remote code execution and custom script injection."
         },
         {
-          command: "PROXY SERVER",
-          phase: "CHECKING SERVER REQUESTS",
+          command: "PROXY SERVER ( WEB )",
+          phase: "SERVER SIDE REQUEST FORGERY",
           explanation:
-            "Test whether the target can be abused into making requests to internal or restricted systems."
+            "Check if server request functionality can be abused to access internal systems."
         },
         {
-          command: "SWAP ID",
-          phase: "TESTING ACCESS CONTROL",
+          command: "SWAP ID ( WEB )",
+          phase: "PARAMETER TAMPERING",
           explanation:
-            "Test whether changing an object identifier can reveal another user's data or resources."
+            "Test whether modifying object identifiers leads to Insecure Direct Object Reference (IDOR) and unauthorized data exposure."
         }
       ];
 
